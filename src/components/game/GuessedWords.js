@@ -10,8 +10,8 @@ export default function GuessedWords(props) {
     <div data-test="component-guesswords">
       <div data-test="guessed-words">
         <h3>Guessed Words</h3>
-        <table>
-          <thead>
+        <table className="table table-sm">
+          <thead className="thead-light">
             <th>Guess</th>
             <th>Matching letter</th>
           </thead>
@@ -19,7 +19,7 @@ export default function GuessedWords(props) {
             {props.guessWords.map((word, index) => {
               return (
                 <tr key={index} data-test="guessed-word">
-                  <td>{word.guessedWord}</td>
+                  <td>{word.guessWord}</td>
                   <td>{word.letterMatchCount}</td>
                 </tr>
               );
@@ -33,7 +33,7 @@ export default function GuessedWords(props) {
 GuessedWords.propTypes = {
   guessWords: PropTypes.arrayOf(
     PropTypes.shape({
-      guessedWord: PropTypes.string,
+      guessWord: PropTypes.string,
       letterMatchCount: PropTypes.number,
     }).isRequired
   ),

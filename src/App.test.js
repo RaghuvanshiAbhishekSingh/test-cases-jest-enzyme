@@ -7,6 +7,6 @@ Enzyme.configure({ adapter: new EnzymeAdapter() });
 test('renders learn react link', () => {
   const wrapper = shallow(<App />);
   //console.log(wrapper.debug())
-  const checkParentDiv = wrapper.find(".App") 
+  const checkParentDiv = wrapper.find(".container") 
   expect(checkParentDiv.length).toBe(1);
 });
