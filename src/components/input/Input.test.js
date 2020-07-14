@@ -12,35 +12,48 @@ const setup = (initialState = {}) => {
 };
 
 describe("Check Input Component", () => {
-  let wrapper;
-  beforeEach(() => {
-    const initialState = { success: false };
-    wrapper = setup(initialState);
-  });
-  
   describe("Word has not been gussed", () => {
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { success: false };
+      wrapper = setup(initialState);
+    });
     test("render component without error", () => {
-        const component = findByTestAttribute(wrapper,'component-input');
-        expect(component.length).toBe(1);
+      const component = findByTestAttribute(wrapper, "component-input");
+      expect(component.length).toBe(1);
     });
 
     test("render Input box", () => {
-        const component = findByTestAttribute(wrapper,'input-box');
-        expect(component.length).toBe(1);
+      const component = findByTestAttribute(wrapper, "input-box");
+      expect(component.length).toBe(1);
     });
 
     test("Render submit button", () => {
-        const component = findByTestAttribute(wrapper,'submit-button');
-        expect(component.length).toBe(1);
+      const component = findByTestAttribute(wrapper, "submit-button");
+      expect(component.length).toBe(1);
     });
   });
 
   describe("Word has been gussed", () => {
-    test("render component without error", () => {});
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { success: true };
+      wrapper = setup(initialState);
+    });
+    test("render component without error", () => {
+      const component = findByTestAttribute(wrapper, "component-input");
+      expect(component.length).toBe(1);
+    });
 
-    test("Does not render Input box", () => {});
+    test("Does not render Input box", () => {
+      const inputComponent = findByTestAttribute(wrapper, "input-box");
+      expect(inputComponent.length).toBe(0);
+    });
 
-    test("does not render submit button", () => {});
+    test("does not render submit button", () => {
+      const submitButton = findByTestAttribute(wrapper, "submit-button");
+      expect(submitButton.length).toBe(0);
+    });
   });
 });
 
