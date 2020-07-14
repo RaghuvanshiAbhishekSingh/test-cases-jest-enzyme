@@ -8,7 +8,25 @@ export default function GuessedWords(props) {
     </div>
   ) : (
     <div data-test="component-guesswords">
-      hh
+      <div data-test="guessed-words">
+        <h3>Guessed Words</h3>
+        <table>
+          <thead>
+            <th>Guess</th>
+            <th>Matching letter</th>
+          </thead>
+          <tbody>
+            {props.guessWords.map((word, index) => {
+              return (
+                <tr key={index} data-test="guessed-word">
+                  <td>{word.guessedWord}</td>
+                  <td>{word.letterMatchCount}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
